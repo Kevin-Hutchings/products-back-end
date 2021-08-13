@@ -7,7 +7,7 @@ const createProduct = (req, res) => {
       image_url,
    } = req.body;
 
-   db.create_product(name, description, price, image_url)
+   db.create_product([name, description, price, image_url])
    .then(() => {
       res.sendStatus(200)
    })
@@ -46,10 +46,9 @@ const getAllProducts = (req, res) => {
 
 const updateProduct = (req, res) => {
    const db = req.app.get('db');
-   const { description } = req.query;
-   const { id } = req.params;
+   const { params, query } = req;
 
-   db.update_products(id, description)
+   db.update_product([params.id, query.desc])
    .then(() => res.sendStatus(200))
    .catch((e) => {
       res.status(500).json({message: "Unable to update product"});

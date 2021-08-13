@@ -3,11 +3,11 @@ const express = require('express');
 const massive = require('massive');
 
 const {
-   createProduct,
-   getOneProduct,
    getAllProducts,
+   getOneProduct,
+   createProduct,
    updateProduct,
-   deleteProduct
+   deleteProduct,
 } = require('./products_controller');
 
 const app = express();
